@@ -1,5 +1,6 @@
 package com.android.wii.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -18,10 +19,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Dashboard() {
+fun Dashboard(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -51,6 +53,7 @@ fun Dashboard() {
                    modifier = Modifier
                        .fillParentMaxWidth()
                        .padding(8.dp)
+                       .clickable { navController.navigate("orderDetail") }
                ) {
                    Text(text = "Pesanan $index", modifier = Modifier.padding(16.dp))
                    Text(text = "4 ayam bali", modifier = Modifier.padding(start = (16.dp)))
@@ -64,20 +67,27 @@ fun Dashboard() {
                            .padding(top = (16.dp)),
                    ) {
                        Button(
-                           onClick = { println("Cek") },
-                           modifier = Modifier.padding(start = (16.dp), bottom = (16.dp))
-                       ) {
-                           Text(text = "Selesai")
-                       }
-                       Button(
-                           onClick = { println("Cek") },
-                           modifier = Modifier.padding(start = (10.dp), bottom = (16.dp)),
+                           onClick = { navController.navigate("orderDetail") },
+                           modifier = Modifier
+                               .padding(
+                                   start = (16.dp),
+                                   bottom = (16.dp)
+                               ),
                            colors = ButtonDefaults.buttonColors(
                                containerColor = MaterialTheme.colorScheme.background,
                                contentColor = MaterialTheme.colorScheme.onBackground
                            )
                        ) {
                            Text(text = "Detail")
+                       }
+                       Button(
+                           onClick = { println("Cek") },
+                           modifier = Modifier.padding(
+                               start = (10.dp),
+                               bottom = (16.dp)
+                           )
+                       ) {
+                           Text(text = "Selesai")
                        }
                    }
                }

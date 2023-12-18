@@ -11,7 +11,7 @@ import com.android.wii.screens.LoginScreen
 fun MyApp() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "login") {
+    NavHost(navController = navController, startDestination = "dashboard") {
         composable("login") { LoginScreen(navController) }
         composable("dashboard") { Dashboard() }
     }

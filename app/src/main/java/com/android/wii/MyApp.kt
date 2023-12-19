@@ -15,6 +15,8 @@ fun MyApp() {
     NavHost(navController = navController, startDestination = "dashboard") {
         composable("login") { LoginScreen(navController) }
         composable("dashboard") { Dashboard(navController) }
-        composable("orderDetail") { OrderDetail(navController) }
+        composable("orderDetail/{orderId}") { backStackEntry ->
+            val orderId = backStackEntry.arguments?.getString("orderId")
+            OrderDetail(navController, orderId) }
     }
 }

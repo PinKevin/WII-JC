@@ -46,7 +46,7 @@ fun Dashboard(navController: NavController) {
                        .fillParentMaxWidth()
                        .padding(8.dp)
                        .clickable {
-                           navController.navigate("orderDetail")
+                           navController.navigate("orderDetail/$index")
                            isHomeButtonActive = false
                        }
                ) {

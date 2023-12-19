@@ -15,6 +15,6 @@ fun MyApp() {
     NavHost(navController = navController, startDestination = "dashboard") {
         composable("login") { LoginScreen(navController) }
         composable("dashboard") { Dashboard(navController) }
-        composable("orderDetail") { OrderDetail() }
+        composable("orderDetail") { OrderDetail(navController) }
     }
 }

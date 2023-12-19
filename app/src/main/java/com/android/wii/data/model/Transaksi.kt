@@ -28,7 +28,7 @@ import java.util.Date
 ])
 data class Transaksi(
     @PrimaryKey(autoGenerate = true)
-    val idTransaksi: Long,
+    val idTransaksi: Long = 0,
     val tanggal: Date,
     val waktu: Time,
     val shift: Int,

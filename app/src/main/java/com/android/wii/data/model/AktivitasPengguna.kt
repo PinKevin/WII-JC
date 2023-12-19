@@ -16,7 +16,7 @@ import java.util.Date
 ])
 data class AktivitasPengguna(
     @PrimaryKey(autoGenerate = true)
-    val idAktivitas: Long,
+    val idAktivitas: Long = 0,
     val tanggal: Date,
     val waktu: Timestamp,
     val idPengguna: Long,

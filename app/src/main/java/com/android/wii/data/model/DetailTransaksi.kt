@@ -14,7 +14,7 @@ import androidx.room.PrimaryKey
 ])
 data class DetailTransaksi(
     @PrimaryKey(autoGenerate = true)
-    val idTransaksi: Long,
+    val idTransaksi: Long = 0,
     val idMenu: Long, // menu
     val namaMenu: String, // menu
     val harga: Int,

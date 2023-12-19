@@ -18,7 +18,7 @@ fun OrderDetail(
 ) {
     Scaffold(
         topBar = {
-            TopBar(title = "Pesanan $orderId")
+            TopBar(title = "Pesanan $orderId", navController = navController)
         },
         bottomBar = {
             BottomBar(navController = navController)

@@ -1,8 +1,10 @@
 package com.android.wii.screens
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -31,8 +33,7 @@ import com.android.wii.component.OrderCard
 import com.android.wii.component.TopBar
 
 @Composable
-fun Dashboard(navController: NavController) {
-
+fun Profile(navController: NavController) {
     Scaffold(
         bottomBar = {
             BottomBar(navController = navController)
@@ -41,14 +42,26 @@ fun Dashboard(navController: NavController) {
         Column(
             modifier = Modifier
                 .padding(innerPadding)
-                .fillMaxWidth()
+                .fillMaxHeight(),
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Card (modifier = Modifier
-                .padding(vertical = 8.dp, horizontal = 16.dp)
-                .fillMaxWidth()
-                .clickable { navController.navigate("order") }
+            Column(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .fillMaxWidth()
             ) {
-                Text(text = "Selamat datang di WII")
+                Card(modifier = Modifier
+                    .padding(vertical = 8.dp, horizontal = 16.dp)
+                    .fillMaxWidth()
+                    .clickable { navController.navigate("order") }
+                ) {
+                    Text(text = "Selamat datang di WII")
+
+                }
+
+            }
+            Button(modifier = Modifier.padding(16.dp).fillMaxWidth(), onClick = { navController.navigate("login") }) {
+                Text(text = "Keluar")
             }
         }
     }

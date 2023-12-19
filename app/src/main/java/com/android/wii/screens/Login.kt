@@ -21,6 +21,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import kotlinx.coroutines.CoroutineScope
@@ -47,7 +48,8 @@ fun LoginScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Selamat datang di WII App"
+                text = "Selamat datang di Aplikasi Warmindo Inspirasi Indonesia",
+                textAlign = TextAlign.Center,
             )
             Text(
                 text = "Login terlebih dahulu",
@@ -59,7 +61,7 @@ fun LoginScreen(navController: NavController) {
                 label = {Text("Email")},
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(8.dp)
+                    .padding(vertical = 8.dp, horizontal = 16.dp)
             )
             TextField(
                 value = password,
@@ -67,14 +69,14 @@ fun LoginScreen(navController: NavController) {
                 label = {Text("Password")},
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(8.dp),
+                    .padding(vertical = 8.dp, horizontal = 16.dp),
                 visualTransformation = PasswordVisualTransformation()
             )
             Button(
                 onClick = { loginButtonHandler(email, password, navController, scope, snackbarHostState) },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(8.dp)
+                    .padding(vertical = 4.dp, horizontal = 16.dp)
             ) {
                 Text(text = "Login")
             }
@@ -90,7 +92,7 @@ private fun loginButtonHandler(
     snackbarHostState: SnackbarHostState
 ) {
     if (email == "email" && password == "email") {
-        navController.navigate("dashboard")
+        navController.navigate("home")
     } else {
         coroutineScope.launch {
             snackbarHostState.showSnackbar(

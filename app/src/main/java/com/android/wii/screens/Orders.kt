@@ -1,7 +1,6 @@
 package com.android.wii.screens
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -31,25 +30,35 @@ import com.android.wii.component.OrderCard
 import com.android.wii.component.TopBar
 
 @Composable
-fun Dashboard(navController: NavController) {
+fun Orders(navController: NavController) {
 
     Scaffold(
         bottomBar = {
             BottomBar(navController = navController)
         },
+//        containerColor = MaterialTheme.colorScheme.primaryContainer,
+        floatingActionButton = {
+            ExtendedFloatingActionButton(
+                onClick = { navController.navigate("order") },
+                modifier = Modifier.padding(bottom = 8.dp),
+                shape = MaterialTheme.shapes.large,
+                containerColor = MaterialTheme.colorScheme.primary,
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Add,
+                    contentDescription = "Add"
+                )
+                Text(text = "Buat Pesanan", modifier = Modifier.padding(start = 8.dp))
+            }
+        }
     ) { innerPadding ->
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .padding(innerPadding)
-                .fillMaxWidth()
         ) {
-            Card (modifier = Modifier
-                .padding(vertical = 8.dp, horizontal = 16.dp)
-                .fillMaxWidth()
-                .clickable { navController.navigate("order") }
-            ) {
-                Text(text = "Selamat datang di WII")
-            }
+           items((1..50).toList()) { item ->
+               OrderCard(navController = navController, data = item)
+           }
         }
     }
 }

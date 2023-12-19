@@ -62,7 +62,10 @@ fun Dashboard(navController: NavController) {
                            .padding(top = (16.dp)),
                    ) {
                        Button(
-                           onClick = { navController.navigate("orderDetail") },
+                           onClick = {
+                               navController.navigate("orderDetail/$index")
+                               isHomeButtonActive = false
+                           },
                            modifier = Modifier
                                .padding(
                                    start = (16.dp),

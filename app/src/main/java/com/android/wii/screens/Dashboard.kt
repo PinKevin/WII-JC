@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.android.wii.component.BottomBar
 import com.android.wii.component.TopBar
+import com.android.wii.data.repository.AppRepository
 
 @Composable
 fun Dashboard(navController: NavController) {
@@ -40,56 +41,52 @@ fun Dashboard(navController: NavController) {
                 .padding(innerPadding)
                 .padding(10.dp)
         ) {
-           items((1..50).toList()) { index ->
-               Card(
-                   modifier = Modifier
-                       .fillParentMaxWidth()
-                       .padding(8.dp)
-                       .clickable {
-                           navController.navigate("orderDetail/$index")
-                           isHomeButtonActive = false
-                       }
-               ) {
-                   Text(text = "Pesanan $index", modifier = Modifier.padding(16.dp))
-                   Text(text = "4 ayam bali", modifier = Modifier.padding(start = (16.dp)))
-                   Text(text = "2 ayam bali krispi", modifier = Modifier.padding(start = (16.dp)))
-                   Text(text = "1 nasi goreng derva", modifier = Modifier.padding(start = (16.dp)))
-                   Text(text = "7 es teh", modifier = Modifier.padding(start = (16.dp), bottom = (18.dp)))
+            items((1..20).toList()) { warung ->
+                Card(
+                    modifier = Modifier
+                        .fillParentMaxWidth()
+                        .padding(8.dp)
+                        .clickable {
+                            navController.navigate("orderDetail/${warung}")
+                            isHomeButtonActive = false
+                        }
+                ) {
+                    Text(text = "Warung $warung", modifier = Modifier.padding(16.dp))
 
-                   Row(
-                       modifier = Modifier
-                           .fillMaxWidth()
-                           .padding(top = (16.dp)),
-                   ) {
-                       Button(
-                           onClick = {
-                               navController.navigate("orderDetail/$index")
-                               isHomeButtonActive = false
-                           },
-                           modifier = Modifier
-                               .padding(
-                                   start = (16.dp),
-                                   bottom = (16.dp)
-                               ),
-                           colors = ButtonDefaults.buttonColors(
-                               containerColor = MaterialTheme.colorScheme.background,
-                               contentColor = MaterialTheme.colorScheme.onBackground
-                           )
-                       ) {
-                           Text(text = "Detail")
-                       }
-                       Button(
-                           onClick = { println("Cek") },
-                           modifier = Modifier.padding(
-                               start = (10.dp),
-                               bottom = (16.dp)
-                           )
-                       ) {
-                           Text(text = "Selesai")
-                       }
-                   }
-               }
-           }
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = (16.dp)),
+                    ) {
+                        Button(
+                            onClick = {
+                                navController.navigate("orderDetail/${warung}")
+                                isHomeButtonActive = false
+                            },
+                            modifier = Modifier
+                                .padding(
+                                    start = (16.dp),
+                                    bottom = (16.dp)
+                                ),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = MaterialTheme.colorScheme.background,
+                                contentColor = MaterialTheme.colorScheme.onBackground
+                            )
+                        ) {
+                            Text(text = "Detail")
+                        }
+                        Button(
+                            onClick = { println("Cek") },
+                            modifier = Modifier.padding(
+                                start = (10.dp),
+                                bottom = (16.dp)
+                            )
+                        ) {
+                            Text(text = "Selesai")
+                        }
+                    }
+                }
+            }
         }
     }
 }

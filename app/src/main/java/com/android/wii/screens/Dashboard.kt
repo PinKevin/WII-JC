@@ -22,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.android.wii.component.BottomBar
 import com.android.wii.component.TopBar
-import com.android.wii.data.repository.AppRepository
 
 @Composable
 fun Dashboard(navController: NavController) {

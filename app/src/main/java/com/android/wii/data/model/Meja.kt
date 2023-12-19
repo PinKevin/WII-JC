@@ -13,7 +13,8 @@ import androidx.room.PrimaryKey
     )
 ])
 data class Meja(
-    @PrimaryKey val idMeja: Long,
+    @PrimaryKey(autoGenerate = true)
+    val idMeja: Long = 0,
     val idWarung: Long,
     val kodeMeja: String
 )

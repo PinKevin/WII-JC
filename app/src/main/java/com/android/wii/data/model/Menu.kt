@@ -5,7 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "menu")
 data class Menu(
-    @PrimaryKey val idMenu: Long,
+    @PrimaryKey(autoGenerate = true)
+    val idMenu: Long = 0,
     val namaMenu: String,
     val kategori: String, // makanan/minuman
     val harga: Double,
